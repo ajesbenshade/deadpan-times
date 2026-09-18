@@ -20,6 +20,7 @@ export function Masthead({ home = false }: { home?: boolean }) {
       }
       sizes={home ? "100vw" : "(max-width: 640px) 92vw, 36rem"}
       preload={home}
+      loading="eager"
       fetchPriority={home ? "high" : "auto"}
     />
   );
