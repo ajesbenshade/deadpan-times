@@ -10,17 +10,15 @@ export function SiteShell({
   home?: boolean;
 }) {
   return (
-    <div className="flex min-h-full w-full flex-col">
+    <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col px-4 py-6 sm:px-6 sm:py-8">
       <a href="#content" className="skip-link">
         Skip to stories
       </a>
       <SiteHeader home={home} />
-      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 sm:px-6">
-        <main id="content" className="flex-1 py-8">
-          {children}
-        </main>
-        <SiteFooter />
-      </div>
+      <main id="content" className="flex-1 py-8">
+        {children}
+      </main>
+      <SiteFooter />
     </div>
   );
 }

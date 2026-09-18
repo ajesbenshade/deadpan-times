@@ -3,10 +3,10 @@ import { Masthead } from "@/components/Masthead";
 
 export function SiteHeader({ home = false }: { home?: boolean }) {
   return (
-    <header className="flex w-full flex-col">
+    <header className="flex flex-col gap-3">
       <Masthead home={home} />
-      <nav aria-label="Primary" className="border-b border-ink bg-paper">
-        <ul className="mx-auto flex max-w-5xl items-center justify-center gap-8 px-4 py-3 sm:px-6">
+      <nav aria-label="Primary" className="border-b border-ink pb-3">
+        <ul className="flex items-center justify-center gap-8">
           <li>
             <Link
               href="/"

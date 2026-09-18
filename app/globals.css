@@ -2,7 +2,6 @@
 
 :root {
   --paper: #ffffff;
-  --newsprint: #f4f1ea;
   --ink: #111111;
   --muted: #3d3d3d;
   --accent: #8a1c1c;
@@ -10,7 +9,6 @@
 
 @theme inline {
   --color-paper: var(--paper);
-  --color-newsprint: var(--newsprint);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
