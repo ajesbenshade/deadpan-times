@@ -16,7 +16,7 @@ export function Masthead({ home = false }: { home?: boolean }) {
         width={72}
         height={72}
         className="mx-auto mt-3 h-14 w-14 sm:h-[4.5rem] sm:w-[4.5rem]"
-        priority
+        preload
       />
       <TitleTag className="font-display mt-2 text-[clamp(2.35rem,10vw,5.4rem)] leading-none font-black tracking-tight text-ink italic">
         {home ? (
