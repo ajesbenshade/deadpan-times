@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/ArticleBody";
+import { ArticleImage } from "@/components/ArticleImage";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
 import { SiteShell } from "@/components/SiteShell";
 import { getArticle, getArticles } from "@/lib/articles";
@@ -27,6 +28,18 @@ export async function generateMetadata({
   return {
     title: article.headline,
     description: article.excerpt,
+    openGraph: article.image
+      ? {
+          title: article.headline,
+          description: article.excerpt,
+          images: [
+            {
+              url: article.image,
+              alt: article.imageAlt ?? article.headline,
+            },
+          ],
+        }
+      : undefined,
   };
 }
 
@@ -52,6 +65,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <p className="mt-4 font-serif text-xs font-semibold tracking-[0.18em] text-muted uppercase">
           {article.dateline}
         </p>
+        {article.image ? (
+          <ArticleImage
+            src={article.image}
+            alt={article.imageAlt ?? article.headline}
+            className="mt-6"
+            sizes="(max-width: 1024px) 100vw, 64rem"
+            priority
+          />
+        ) : null}
         <ArticleBody paragraphs={article.paragraphs} />
       </article>
 
