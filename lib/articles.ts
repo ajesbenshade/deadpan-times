@@ -12,6 +12,7 @@ export type Article = {
   excerpt: string;
   image?: string;
   imageAlt?: string;
+  ogImage?: string;
 };
 
 const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
@@ -73,6 +74,7 @@ function parseArticle(filename: string, raw: string): Article {
           imageAlt: meta.imageAlt ?? meta.headline,
         }
       : {}),
+    ...(meta.ogImage ? { ogImage: meta.ogImage } : {}),
   };
 }
 

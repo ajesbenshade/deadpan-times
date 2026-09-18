@@ -5,6 +5,7 @@ import { ArticleImage } from "@/components/ArticleImage";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
 import { SiteShell } from "@/components/SiteShell";
 import { getArticle, getArticles } from "@/lib/articles";
+import { articleShareMetadata } from "@/lib/seo";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -25,22 +26,7 @@ export async function generateMetadata({
     return { title: "Story not found" };
   }
 
-  return {
-    title: article.headline,
-    description: article.excerpt,
-    openGraph: article.image
-      ? {
-          title: article.headline,
-          description: article.excerpt,
-          images: [
-            {
-              url: article.image,
-              alt: article.imageAlt ?? article.headline,
-            },
-          ],
-        }
-      : undefined,
-  };
+  return articleShareMetadata(article);
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {

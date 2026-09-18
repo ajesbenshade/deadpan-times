@@ -5,6 +5,7 @@ slug: opec-takes-credit-hurricane-warming
 section: Climate
 order: 4
 image: /articles/opec-takes-credit-hurricane-warming.jpg
+ogImage: /og/opec-takes-credit-hurricane-warming.jpg
 imageAlt: OPEC officials in suits cut a cake on a beach beside stacked oil barrels. The cake reads Lives Not Ended By Wind.
 ---
 
