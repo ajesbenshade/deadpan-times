@@ -4,6 +4,9 @@ dateline: VIENNA
 slug: opec-takes-credit-hurricane-warming
 section: Climate
 order: 4
+image: /articles/opec-takes-credit-hurricane-warming.jpg
+ogImage: /og/opec-takes-credit-hurricane-warming.jpg
+imageAlt: OPEC officials in suits cut a cake on a beach beside stacked oil barrels. The cake reads Lives Not Ended By Wind.
 ---
 
 VIENNA — OPEC held a brief ceremony Monday thanking fossil fuels for a quiet Atlantic hurricane season, formally claiming credit for thousands of lives that were not ended by wind and asking climate activists to please stop trying to undo the cartel’s humanitarian work.

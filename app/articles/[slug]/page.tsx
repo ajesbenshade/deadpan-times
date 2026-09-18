@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/ArticleBody";
+import { ArticleImage } from "@/components/ArticleImage";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
 import { SiteShell } from "@/components/SiteShell";
 import { getArticle, getArticles } from "@/lib/articles";
+import { articleShareMetadata } from "@/lib/seo";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -24,10 +26,7 @@ export async function generateMetadata({
     return { title: "Story not found" };
   }
 
-  return {
-    title: article.headline,
-    description: article.excerpt,
-  };
+  return articleShareMetadata(article);
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
@@ -52,6 +51,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <p className="mt-4 font-serif text-xs font-semibold tracking-[0.18em] text-muted uppercase">
           {article.dateline}
         </p>
+        {article.image ? (
+          <ArticleImage
+            src={article.image}
+            alt={article.imageAlt ?? article.headline}
+            className="mt-6"
+            sizes="(max-width: 1024px) 100vw, 64rem"
+            priority
+          />
+        ) : null}
         <ArticleBody paragraphs={article.paragraphs} />
       </article>
 

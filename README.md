@@ -31,6 +31,8 @@ dateline: CITY
 slug: your-slug
 section: World
 order: 4
+image: /articles/your-slug.jpg
+imageAlt: Optional description of the lede image
 ---
 
 CITY — First paragraph of the story.
@@ -38,4 +40,4 @@ CITY — First paragraph of the story.
 Second paragraph.
 ```
 
-`slug` must match the filename (without `.md`). The homepage lists every article, ordered by `order`. Routes are generated at `/articles/[slug]`.
+`slug` must match the filename (without `.md`). Optional `image` (a path under `public/`) and `imageAlt` add a lede photo on the article page and a teaser thumbnail on the homepage. The homepage lists every article, ordered by `order`. Routes are generated at `/articles/[slug]`.

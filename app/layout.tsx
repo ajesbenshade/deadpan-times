@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Serif_4 } from "next/font/google";
+import { homeShareMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  ...homeShareMetadata(),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

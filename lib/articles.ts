@@ -10,6 +10,9 @@ export type Article = {
   order: number;
   paragraphs: string[];
   excerpt: string;
+  image?: string;
+  imageAlt?: string;
+  ogImage?: string;
 };
 
 const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
@@ -65,6 +68,13 @@ function parseArticle(filename: string, raw: string): Article {
     order: Number.parseInt(meta.order, 10),
     paragraphs,
     excerpt: excerptFrom(paragraphs[0], meta.dateline),
+    ...(meta.image
+      ? {
+          image: meta.image,
+          imageAlt: meta.imageAlt ?? meta.headline,
+        }
+      : {}),
+    ...(meta.ogImage ? { ogImage: meta.ogImage } : {}),
   };
 }
 
