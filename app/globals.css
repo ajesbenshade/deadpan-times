@@ -52,25 +52,3 @@ body {
 .article-body p + p {
   margin-top: 1.25rem;
 }
-
-.article-body > p:first-of-type::first-letter {
-  float: left;
-  font-family: var(--font-display);
-  font-size: 4.4rem;
-  font-weight: 700;
-  line-height: 0.75;
-  padding-right: 0.45rem;
-  padding-top: 0.18rem;
-}
-
-@media (min-width: 640px) {
-  .article-body > p:first-of-type::first-letter {
-    font-size: 5.1rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-}
