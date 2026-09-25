@@ -33,4 +33,4 @@ Activists warned that celebrating a quiet season would encourage the public to l
 
 Critics suggested both sides chill out, which activists interpreted as a threat of intentional global cooling — also bad — and which OPEC interpreted as an endorsement of continued drilling under a wellness brand.
 
-At press time, OPEC was drafting a follow-up claim for credit over sunny park days, arguing that without industrial CO₂ the outdoors would still be “mostly glaciers and guilt,” while activists were seen panicking after a pleasant afternoon that threatened to overcrow crowded beaches with people who had not drowned.
+At press time, OPEC was drafting a follow-up claim for credit over sunny park days, arguing that without industrial CO₂ the outdoors would still be “mostly glaciers and guilt,” while activists were seen panicking after a pleasant afternoon that threatened to overcrowd beaches with people who had not drowned.
