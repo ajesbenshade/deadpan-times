@@ -4,6 +4,7 @@ dateline: GENEVA
 slug: honeybees-demand-reparations
 section: World
 order: 1
+series: bee-desk
 ---
 
 GENEVA— Representatives of the world’s honeybee population issued a formal demand for reparations Monday, claiming humanity owes a massive settlement to compensate for approximately 30,000 years of stolen honey.
