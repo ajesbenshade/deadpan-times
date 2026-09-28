@@ -13,7 +13,25 @@ export type Article = {
   image?: string;
   imageAlt?: string;
   ogImage?: string;
+  series?: string;
 };
+
+const SERIES_TITLES: Record<string, string> = {
+  "bee-desk": "Bee Desk",
+};
+
+export function seriesTitle(seriesId: string): string {
+  const known = SERIES_TITLES[seriesId];
+  if (known) {
+    return known;
+  }
+
+  return seriesId
+    .split("-")
+    .filter((part) => part.length > 0)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
 
 const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
 
@@ -30,10 +48,17 @@ function parseFrontmatter(raw: string, filename: string): {
   for (const line of match[1].split("\n")) {
     const separator = line.indexOf(": ");
     if (separator === -1) continue;
-    meta[line.slice(0, separator)] = line.slice(separator + 2);
+    meta[line.slice(0, separator)] = parseFrontmatterValue(line.slice(separator + 2));
   }
 
   return { meta, body: match[2].trim() };
+}
+
+function parseFrontmatterValue(raw: string): string {
+  if (raw.length >= 2 && raw.startsWith('"') && raw.endsWith('"')) {
+    return raw.slice(1, -1).replace(/\\(["\\])/g, "$1");
+  }
+  return raw;
 }
 
 function excerptFrom(firstParagraph: string, dateline: string): string {
@@ -75,7 +100,18 @@ function parseArticle(filename: string, raw: string): Article {
         }
       : {}),
     ...(meta.ogImage ? { ogImage: meta.ogImage } : {}),
+    ...(meta.series ? { series: meta.series } : {}),
   };
+}
+
+export function getSeriesCompanions(article: Article): Article[] {
+  if (!article.series) {
+    return [];
+  }
+
+  return getArticles().filter(
+    (item) => item.series === article.series && item.slug !== article.slug,
+  );
 }
 
 export const getArticles = cache((): Article[] => {

@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/ArticleBody";
 import { ArticleImage } from "@/components/ArticleImage";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
+import { SeriesLinks } from "@/components/SeriesLinks";
 import { SiteShell } from "@/components/SiteShell";
-import { getArticle, getArticles } from "@/lib/articles";
+import { getArticle, getArticles, getSeriesCompanions } from "@/lib/articles";
 import { articleShareMetadata } from "@/lib/seo";
 
 type ArticlePageProps = {
@@ -61,6 +62,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           />
         ) : null}
         <ArticleBody paragraphs={article.paragraphs} />
+        {article.series ? (
+          <SeriesLinks
+            series={article.series}
+            articles={getSeriesCompanions(article)}
+          />
+        ) : null}
       </article>
 
       {moreStories.length > 0 ? (
