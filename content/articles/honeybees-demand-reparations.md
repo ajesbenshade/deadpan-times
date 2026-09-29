@@ -5,6 +5,9 @@ slug: honeybees-demand-reparations
 section: World
 order: 1
 series: bee-desk
+image: /articles/honeybees-demand-reparations.jpg
+ogImage: /og/honeybees-demand-reparations.jpg
+imageAlt: "A formal hearing table with tiny bee-sized nameplates and microphones, honeybees at their seats, a bound document titled REPARATIONS CLAIM: 30,000 YEARS OF HONEY, and an empty chair beside a honey jar."
 ---
 
 GENEVA— Representatives of the world’s honeybee population issued a formal demand for reparations Monday, claiming humanity owes a massive settlement to compensate for approximately 30,000 years of stolen honey.
