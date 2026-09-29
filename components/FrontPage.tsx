@@ -3,6 +3,7 @@ import { ArticleImage } from "@/components/ArticleImage";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
 import { SectionLabel } from "@/components/SectionLabel";
 import type { Article } from "@/lib/articles";
+import { deck } from "@/lib/reading";
 
 export function FrontPage({ articles }: { articles: Article[] }) {
   const [lead, ...rest] = articles;
@@ -16,8 +17,9 @@ export function FrontPage({ articles }: { articles: Article[] }) {
   }
 
   const photo = rest.find((article) => article.image);
+  const placePhotoInRail = Boolean(photo) && !lead.image;
   const railPool = rest.filter((article) => article.slug !== photo?.slug);
-  const rail = railPool.slice(0, 4);
+  const rail = railPool.slice(0, placePhotoInRail ? 3 : 4);
   const railSlugs = new Set(rail.map((article) => article.slug));
   const more = railPool.filter((article) => !railSlugs.has(article.slug));
   const grid = more.slice(0, 6);
@@ -35,9 +37,15 @@ export function FrontPage({ articles }: { articles: Article[] }) {
       </div>
 
       <div
-        className={`grid gap-8 lg:gap-10 ${rail.length > 0 ? "lg:grid-cols-12" : ""}`}
+        className={`grid gap-8 lg:gap-10 ${
+          rail.length > 0 || placePhotoInRail ? "lg:grid-cols-12" : ""
+        }`}
       >
-        <article className={rail.length > 0 ? "lg:col-span-8" : undefined}>
+        <article
+          className={
+            rail.length > 0 || placePhotoInRail ? "lg:col-span-8" : undefined
+          }
+        >
           <SectionLabel section={lead.section} />
           <h3 className="font-display mt-3 text-4xl leading-[1.05] font-bold tracking-tight text-balance sm:text-5xl lg:text-[3.35rem]">
             <Link
@@ -51,7 +59,7 @@ export function FrontPage({ articles }: { articles: Article[] }) {
             {lead.dateline}
           </p>
           <p className="mt-4 max-w-2xl font-serif text-lg leading-8 text-muted sm:text-xl sm:leading-9">
-            {lead.excerpt}
+            {deck(lead.excerpt, 320)}
           </p>
           {lead.image ? (
             <Link
@@ -68,27 +76,53 @@ export function FrontPage({ articles }: { articles: Article[] }) {
           ) : null}
         </article>
 
-        {rail.length > 0 ? (
-          <aside
-            aria-labelledby="edition-rail-heading"
-            className="lg:col-span-4 lg:border-l lg:border-ink lg:pl-8"
-          >
-            <h2
-              id="edition-rail-heading"
-              className="font-sans text-xs font-semibold tracking-[0.22em] text-ink uppercase"
-            >
-              In this edition
-            </h2>
-            <div className="mt-1">
-              {rail.map((article) => (
-                <ArticleTeaser key={article.slug} article={article} compact />
-              ))}
-            </div>
-          </aside>
+        {rail.length > 0 || placePhotoInRail ? (
+          <div className="lg:col-span-4 lg:border-l lg:border-ink lg:pl-8">
+            {placePhotoInRail && photo?.image ? (
+              <article className="mb-8">
+                <Link
+                  href={`/articles/${photo.slug}`}
+                  className="block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  <ArticleImage
+                    src={photo.image}
+                    alt={photo.imageAlt ?? photo.headline}
+                    sizes="(max-width: 1024px) 100vw, 22rem"
+                  />
+                </Link>
+                <div className="mt-3">
+                  <SectionLabel section={photo.section} />
+                  <h3 className="font-display mt-1 text-2xl leading-snug font-bold tracking-tight text-balance">
+                    <Link
+                      href={`/articles/${photo.slug}`}
+                      className="rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >
+                      {photo.headline}
+                    </Link>
+                  </h3>
+                </div>
+              </article>
+            ) : null}
+            {rail.length > 0 ? (
+              <aside aria-labelledby="edition-rail-heading">
+                <h2
+                  id="edition-rail-heading"
+                  className="font-sans text-xs font-semibold tracking-[0.22em] text-ink uppercase"
+                >
+                  In this edition
+                </h2>
+                <div className="mt-1">
+                  {rail.map((article) => (
+                    <ArticleTeaser key={article.slug} article={article} compact />
+                  ))}
+                </div>
+              </aside>
+            ) : null}
+          </div>
         ) : null}
       </div>
 
-      {photo ? (
+      {photo && !placePhotoInRail ? (
         <article className="mt-10 grid items-center gap-6 border-t border-ink pt-8 lg:grid-cols-2 lg:gap-10">
           <Link
             href={`/articles/${photo.slug}`}
@@ -113,7 +147,9 @@ export function FrontPage({ articles }: { articles: Article[] }) {
             <p className="mt-3 font-sans text-[0.7rem] font-semibold tracking-[0.16em] text-muted uppercase">
               {photo.dateline}
             </p>
-            <p className="mt-3 font-serif text-lg leading-8 text-muted">{photo.excerpt}</p>
+            <p className="mt-3 font-serif text-lg leading-8 text-muted">
+              {deck(photo.excerpt, 240)}
+            </p>
           </div>
         </article>
       ) : null}

@@ -46,7 +46,7 @@ export function SiteHeader({
       <Masthead home={home} />
       <nav
         aria-label="Primary"
-        className="no-print flex flex-col gap-3 border-b border-ink pb-3 lg:flex-row lg:items-center lg:justify-between"
+        className="no-print flex flex-col gap-3 border-b border-ink bg-paper pb-3 lg:sticky lg:top-0 lg:z-30 lg:flex-row lg:items-center lg:justify-between lg:py-3"
       >
         <ul className="nav-scroll -mx-4 flex items-center gap-x-5 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0 lg:pb-0">
           <NavItem href="/" current={current === "home"}>

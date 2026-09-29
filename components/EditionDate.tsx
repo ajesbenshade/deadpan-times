@@ -1,6 +1,6 @@
 "use client";
 
-export function EditionDate() {
+export function EditionDate({ className }: { className?: string }) {
   const label = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
     month: "long",
@@ -12,7 +12,10 @@ export function EditionDate() {
   return (
     <p
       suppressHydrationWarning
-      className="mt-2 font-sans text-[0.7rem] font-semibold tracking-[0.22em] text-muted uppercase"
+      className={
+        className ??
+        "mt-2 font-sans text-[0.7rem] font-semibold tracking-[0.22em] text-muted uppercase"
+      }
     >
       {label}
     </p>

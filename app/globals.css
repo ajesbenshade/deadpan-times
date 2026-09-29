@@ -58,8 +58,28 @@ body {
   display: none;
 }
 
-.article-body p + p {
+.article-body p + p,
+.article-body .pull-quote + p {
   margin-top: 1.25rem;
+}
+
+.pull-quote {
+  margin: 1.75rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.85rem 0 0.7rem;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .pull-quote {
+    float: right;
+    width: 15.5rem;
+    margin: 0.15rem 0 1rem 1.75rem;
+  }
 }
 
 .article-body > p:first-of-type::first-letter {

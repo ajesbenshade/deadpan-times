@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArticleImage } from "@/components/ArticleImage";
 import { SectionLabel } from "@/components/SectionLabel";
 import type { Article } from "@/lib/articles";
+import { deck } from "@/lib/reading";
 
 export function ArticleTeaser({
   article,
@@ -71,7 +72,7 @@ export function ArticleTeaser({
           featured ? "text-lg leading-8 sm:text-xl sm:leading-9" : "text-base leading-7"
         }`}
       >
-        {article.excerpt}
+        {deck(article.excerpt, featured ? 280 : 170)}
       </p>
     </article>
   );
