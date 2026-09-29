@@ -131,3 +131,17 @@ export const getArticles = cache((): Article[] => {
 export function getArticle(slug: string): Article | undefined {
   return getArticles().find((article) => article.slug === slug);
 }
+
+export function getSeriesIds(): string[] {
+  const ids = new Set<string>();
+  for (const article of getArticles()) {
+    if (article.series) {
+      ids.add(article.series);
+    }
+  }
+  return [...ids];
+}
+
+export function getSeriesArticles(seriesId: string): Article[] {
+  return getArticles().filter((article) => article.series === seriesId);
+}

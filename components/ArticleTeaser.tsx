@@ -1,14 +1,33 @@
 import Link from "next/link";
 import { ArticleImage } from "@/components/ArticleImage";
+import { SectionLabel } from "@/components/SectionLabel";
 import type { Article } from "@/lib/articles";
 
 export function ArticleTeaser({
   article,
   featured = false,
+  compact = false,
 }: {
   article: Article;
   featured?: boolean;
+  compact?: boolean;
 }) {
+  if (compact) {
+    return (
+      <article className="border-b border-ink/15 py-3.5 last:border-b-0">
+        <SectionLabel section={article.section} />
+        <h3 className="font-display mt-1 text-lg leading-snug font-bold tracking-tight">
+          <Link
+            href={`/articles/${article.slug}`}
+            className="rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            {article.headline}
+          </Link>
+        </h3>
+      </article>
+    );
+  }
+
   const image = article.image ? (
     <Link
       href={`/articles/${article.slug}`}
@@ -20,7 +39,7 @@ export function ArticleTeaser({
         sizes={
           featured
             ? "(max-width: 1024px) 100vw, 64rem"
-            : "(max-width: 768px) 100vw, 32rem"
+            : "(max-width: 768px) 100vw, 24rem"
         }
       />
     </Link>
@@ -28,9 +47,7 @@ export function ArticleTeaser({
 
   return (
     <article className={featured ? "border-b border-ink pb-8" : "flex flex-col"}>
-      <p className="font-serif text-[0.7rem] font-semibold tracking-[0.22em] text-accent uppercase">
-        {article.section}
-      </p>
+      <SectionLabel section={article.section} />
       <h3
         className={`font-display mt-2 font-bold tracking-tight text-balance ${
           featured
@@ -45,7 +62,7 @@ export function ArticleTeaser({
           {article.headline}
         </Link>
       </h3>
-      <p className="mt-2 font-serif text-xs font-semibold tracking-[0.18em] text-muted uppercase">
+      <p className="mt-2 font-sans text-[0.7rem] font-semibold tracking-[0.16em] text-muted uppercase">
         {article.dateline}
       </p>
       {image}

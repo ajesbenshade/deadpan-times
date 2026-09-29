@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Serif_4 } from "next/font/google";
+import { Playfair_Display, Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import { homeShareMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import "./globals.css";
@@ -13,6 +13,12 @@ const playfair = Playfair_Display({
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   variable: "--font-body",
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-ui",
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${sourceSerif.variable} h-full`}
+      className={`${playfair.variable} ${sourceSerif.variable} ${sourceSans.variable} h-full`}
     >
       <body className="min-h-full bg-paper font-serif text-ink antialiased">
         {children}

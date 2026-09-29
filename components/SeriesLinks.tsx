@@ -19,9 +19,14 @@ export function SeriesLinks({
     >
       <h2
         id="series-links-heading"
-        className="font-serif text-xs font-semibold tracking-[0.28em] text-ink uppercase"
+        className="font-sans text-xs font-semibold tracking-[0.22em] text-ink uppercase"
       >
-        More from the {seriesTitle(series)}
+        <Link
+          href={`/series/${series}`}
+          className="rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
+          More from the {seriesTitle(series)}
+        </Link>
       </h2>
       <ul className="mt-4 border-t border-ink">
         {articles.map((article) => (

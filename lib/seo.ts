@@ -46,6 +46,37 @@ export function articleShareMetadata(article: Article): Metadata {
   };
 }
 
+export function pageShareMetadata(
+  title: string,
+  description: string,
+  path: string,
+): Metadata {
+  const url = absoluteUrl(path);
+  const image = shareImage();
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "website",
+      siteName: SITE.name,
+      title,
+      description,
+      url,
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [{ url: image.url, alt: image.alt }],
+    },
+  };
+}
+
 export function homeShareMetadata(): Pick<
   Metadata,
   "metadataBase" | "alternates" | "openGraph" | "twitter"

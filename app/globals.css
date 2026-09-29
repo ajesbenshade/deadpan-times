@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #ffffff;
-  --ink: #111111;
-  --muted: #3d3d3d;
-  --accent: #8a1c1c;
+  --paper: #f3efe6;
+  --ink: #161513;
+  --muted: #5c564e;
+  --accent: #9a1b1b;
 }
 
 @theme inline {
@@ -14,6 +14,7 @@
   --color-accent: var(--accent);
   --font-serif: var(--font-body), "Iowan Old Style", Palatino, "Times New Roman",
     serif;
+  --font-sans: var(--font-ui), "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display-face), Georgia, "Times New Roman", serif;
 }
 
@@ -39,7 +40,7 @@ body {
   background: var(--ink);
   color: var(--paper);
   padding: 0.4rem 0.75rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 0.875rem;
 }
 
@@ -49,6 +50,40 @@ body {
   outline-offset: 2px;
 }
 
+.nav-scroll {
+  scrollbar-width: none;
+}
+
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .article-body p + p {
   margin-top: 1.25rem;
+}
+
+.article-body > p:first-of-type::first-letter {
+  float: left;
+  margin: 0.06em 0.08em 0 0;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 0.75;
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .article-body > p:first-of-type::first-letter {
+    font-size: 4.5rem;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
 }

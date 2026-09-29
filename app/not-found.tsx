@@ -15,12 +15,18 @@ export default function NotFound() {
           The item requested does not appear in today’s edition, and the facts
           remain unavailable at press time.
         </p>
-        <p className="mt-8">
+        <p className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
           <Link
             href="/"
-            className="font-serif text-sm font-semibold tracking-[0.18em] text-ink uppercase underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            className="font-sans text-sm font-semibold tracking-[0.16em] text-ink uppercase underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
-            Return to the front page
+            Front page
+          </Link>
+          <Link
+            href="/archive"
+            className="font-sans text-sm font-semibold tracking-[0.16em] text-ink uppercase underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            Archive
           </Link>
         </p>
       </div>
