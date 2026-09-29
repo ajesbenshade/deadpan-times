@@ -5,6 +5,9 @@ slug: humans-refuse-bee-reparations
 section: Nation
 order: 2
 series: bee-desk
+image: /articles/humans-refuse-bee-reparations.jpg
+ogImage: /og/humans-refuse-bee-reparations.jpg
+imageAlt: An empty press podium with a DENIED placard and a honey jar beside an easel showing a sprawling family tree chart titled 1,200 GENERATIONS.
 ---
 
 WASHINGTON — Human officials formally rejected the honeybee demand for 30,000 years of back honey Monday, arguing that no living person stole a drop of it and that the claimants themselves are roughly 1,200 generations removed from the original alleged victims.

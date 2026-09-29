@@ -4,6 +4,9 @@ dateline: OTTAWA
 slug: canada-declares-eu-strong-enough-to-join-canada
 section: World
 order: 5
+image: /articles/canada-declares-eu-strong-enough-to-join-canada.jpg
+ogImage: /og/canada-declares-eu-strong-enough-to-join-canada.jpg
+imageAlt: An empty press conference podium and folding chairs buried in snow during a blizzard, the microphone crusted with ice.
 ---
 
 OTTAWA — Hours after the European Union invited Canada to join on grounds of sufficient weakness, Canadian officials held a rival press conference declaring the EU strong enough to join Canada, then immediately walked the offer back when someone explained what winter is.
